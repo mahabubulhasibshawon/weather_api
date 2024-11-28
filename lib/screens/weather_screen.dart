@@ -34,8 +34,32 @@ class _WeatherScreenState extends State<WeatherScreen> {
     }
   }
   // weather animation
+
+  // init state
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _fetchWeather();
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // city name
+            Text(_weather?.cityName ?? "loadting city..."),
+          //   temparature
+            Text('${_weather?.temp.round()} c'),
+          //   condition
+            Text(_weather?.mainCondition ?? 'loadtion condition'),
+            Text(_weather?.timezone ?? '00'),
+            Text('Wind speed ${_weather?.windSpeed}')
+          ],
+        ),
+      ),
+    );
   }
 }
