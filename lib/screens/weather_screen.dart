@@ -1,10 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:weather/services/weather_service.dart';
 
-class WeatherScreen extends StatelessWidget {
+import '../models/weather_model.dart';
+
+class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
 
   @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+
+  // api key
+  final _weatherService = WeatherService('10514a4bf4b8452dd0b7ba342adb286d');
+  Weather? _weather;
+
+  // fetch weather
+  _fetchWeather() async{
+  //   get the current city
+    String cityName = await _weatherService.getCurrentCity();
+
+  //   get weather for city
+    try {
+      final weather = await _weatherService.getWeather(cityName);
+      setState(() {
+        _weather = weather;
+      });
+    }
+  //   any errors
+    catch (e) {
+      print(e);
+    }
+  }
+  // weather animation
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold();
   }
 }
