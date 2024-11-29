@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:weather/services/weather_service.dart';
 
 import '../models/weather_model.dart';
@@ -49,6 +50,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // animation
+            Lottie.asset('assets/snow.json'),
             // city name
             Text(_weather?.cityName ?? "loadting city..."),
           //   temparature
