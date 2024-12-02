@@ -39,11 +39,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
     switch (mainCondition.toLowerCase()) {
       case 'clouds':
+        return 'assets/rain.json';
       case 'mist':
       case 'smoke':
       case 'haze':
       case 'dust':
       case 'fog':
+      return 'assets/snow.json';
       case 'rain':
         return 'assets/rain.json';
       case 'snow':
